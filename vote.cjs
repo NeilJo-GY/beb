@@ -1,6 +1,7 @@
 const { ethers } = require('ethers');
 
 // 环境变量配置
+require('dotenv').config();
 const apiKey = process.env.API_KEY; // 从环境变量读取API密钥
 const providerUrl = process.env.PROVIDER_URL; // BEVM网络的RPC URL
 const contractAddress = process.env.CONTRACT_ADDRESS; // 投票合约地址
@@ -10,7 +11,7 @@ console.log("Provider URL:", providerUrl);
 console.log("Contract Address:", contractAddress);
 
 // 设置以太坊提供者
-const provider = new ethers.providers.JsonRpcProvider(providerUrl);
+const provider = new ethers.JsonRpcProvider(providerUrl);
 
 // 合约ABI
 const contractABI = [
