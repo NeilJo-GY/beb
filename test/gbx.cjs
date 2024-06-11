@@ -1,5 +1,6 @@
-// gbxbalance.cjs
+const express = require('express');
 const { ethers } = require('ethers');
+const app = express();
 
 // 环境变量配置
 require('dotenv').config();
@@ -16,32 +17,34 @@ const provider = new ethers.JsonRpcProvider(providerUrl);
 
 // 合约ABI
 const contractABI = [
-    // 定义你需要使用的合约方法的ABI
-    {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "owner",
-            "type": "address"
-          }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    }
+  // 定义你需要使用的合约方法的ABI
+  {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  }
 ];
-  
+
 // 创建合约实例
 const contract = new ethers.Contract(gbxContractAddress, contractABI, provider);
 
-module.exports = async (req, res) => {
+app.use(express.json());
+
+app.post('/gbx', async (req, res) => {
   const { userId, accounts } = req.body;
   const headers = req.headers;
 
@@ -93,4 +96,11 @@ module.exports = async (req, res) => {
       to: error.transaction?.to
     });
   }
-};
+});
+
+// Add a handler for the root path to help diagnose issues
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
+
+app.listen(3001, () => console.log('Running on port 3001'));
