@@ -13,11 +13,11 @@
     "routes": [
       {
         "src": "/api/vote",
-        "dest": "/vote.cjs"
+        "dest": "/api/vote.cjs"
       },
       {
         "src": "/api/btcbalance",
-        "dest": "/btcbalance.cjs"
+        "dest": "/api/btcbalance.cjs"
       }
     ]
   }

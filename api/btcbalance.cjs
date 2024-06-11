@@ -1,3 +1,4 @@
+// btcbalance.cjs
 const { ethers } = require('ethers');
 
 // 环境变量配置
