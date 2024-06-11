@@ -8,6 +8,18 @@
       {
         "src": "api/btcbalance.cjs",
         "use": "@vercel/node"
+      },
+      {
+        "src": "api/ordinalsru.cjs",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/satbalance.cjs",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/gbxbalance.cjs",
+        "use": "@vercel/node"
       }
     ],
     "routes": [
@@ -18,6 +30,18 @@
       {
         "src": "/api/btcbalance",
         "dest": "/api/btcbalance.cjs"
+      },
+      {
+        "src": "/api/ordinalsru",
+        "dest": "/api/ordinalsru.cjs"
+      },
+      {
+        "src": "/api/satbalance",
+        "dest": "/api/satbalance.cjs"
+      },
+      {
+        "src": "/api/gbxbalance",
+        "dest": "/api/gbxbalance.cjs"
       }
     ]
   }
