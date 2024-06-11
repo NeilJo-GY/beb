@@ -2,14 +2,22 @@
     "version": 2,
     "builds": [
       {
-        "src": "vote.cjs",
+        "src": "api/vote.cjs",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/btcbalance.cjs",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/api/vote",
         "dest": "/vote.cjs"
+      },
+      {
+        "src": "/api/btcbalance",
+        "dest": "/btcbalance.cjs"
       }
     ]
   }
